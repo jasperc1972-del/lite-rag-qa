@@ -1,0 +1,11 @@
+# API Key 等機密設定
+.env
+
+# 向量索引與上傳的原始檔（本機資料，不入版控）
+chroma_db/
+uploads/
+
+# Python
+.venv/
+__pycache__/
+*.pyc

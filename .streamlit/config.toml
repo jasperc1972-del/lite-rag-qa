@@ -1,0 +1,11 @@
+# Streamlit 設定
+[server]
+headless = true        # 不詢問 Email、不自動開瀏覽器（請手動開 http://localhost:8501）
+port = 8501
+address = "localhost"  # 只允許本機連線，區網或外部無法存取（保護私有文件）
+
+[client]
+toolbarMode = "minimal"   # 隱藏右上角 Deploy（發布到雲端）等開發者按鈕
+
+[browser]
+gatherUsageStats = false   # 不回傳使用統計
