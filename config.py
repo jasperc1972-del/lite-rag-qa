@@ -22,6 +22,12 @@ CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-5-5")
 # ---- Embedding 與檢索 ----
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "paraphrase-multilingual-MiniLM-L12-v2")
 TOP_K = int(os.getenv("TOP_K", "4"))  # 每次檢索取回的片段數（PRD 建議 3~5）
+# 檢索模式：vector＝純語意；hybrid＝語意＋關鍵字 (BM25) 以 RRF 合併
+# 評估結果（22 題）：vector 命中 82%、MRR 0.523；hybrid 命中 86%、MRR 0.689
+SEARCH_MODE = os.getenv("SEARCH_MODE", "hybrid")
+# RRF 常數：越小越重視各排名的前幾名。論文值 60 適合大型搜尋引擎，
+# 本專案切片只有數十塊，60 會讓第 1 名與第 18 名差距太小；實驗 5 最佳
+RRF_K = int(os.getenv("RRF_K", "5"))
 
 # ---- 切片參數（單位：字元）----
 CHUNK_SIZE = 500

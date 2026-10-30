@@ -31,7 +31,8 @@ WATCH = ["Q11", "Q12", "Q13", "Q17"]   # 目前設定 (500 / 4) 漏掉的題目
 
 def main():
     questions = [q for q in ev.load_questions() if q["type"] == "in_doc"]
-    print(f"題庫：文件內 {len(questions)} 題；重疊固定 {config.CHUNK_OVERLAP} 字元；只評估檢索（免費）\n")
+    print(f"題庫：文件內 {len(questions)} 題；重疊固定 {config.CHUNK_OVERLAP} 字元；"
+          f"檢索模式 {config.SEARCH_MODE}；只評估檢索（免費）\n")
 
     results = {}   # (size, k) -> {"ranks": {id: rank}, "chars": 平均送出字數, "n_chunks": 切片數}
     for size in CHUNK_SIZES:
@@ -107,7 +108,7 @@ def main():
         summary = {"time": now, "mode": "grid", "chunk_size": size, "chunk_overlap": config.CHUNK_OVERLAP,
                    "top_k": k, "embedding_model": config.EMBEDDING_MODEL, "n_chunks": r["n_chunks"],
                    "n_in_doc": n, "hit_rate": round(hit_rate(r), 4), "mrr": round(mrr(r), 4),
-                   "note": f"網格搜尋；平均送出 {r['chars']:.0f} 字"}
+                   "note": f"網格搜尋（{config.SEARCH_MODE}）；平均送出 {r['chars']:.0f} 字"}
         ev.append_result(summary)
     print(f"\n9 組結果已追加到 {ev.RESULTS.name}")
 

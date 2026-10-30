@@ -10,3 +10,13 @@
 2026-10-31T03:59:51,grid,800,50,3,paraphrase-multilingual-MiniLM-L12-v2,,,17,22,,0.6364,0.4621,,,,,,,,網格搜尋；平均送出 2233 字
 2026-10-31T03:59:51,grid,800,50,4,paraphrase-multilingual-MiniLM-L12-v2,,,17,22,,0.6818,0.4735,,,,,,,,網格搜尋；平均送出 2998 字
 2026-10-31T03:59:51,grid,800,50,5,paraphrase-multilingual-MiniLM-L12-v2,,,17,22,,0.7727,0.4917,,,,,,,,網格搜尋；平均送出 3748 字
+2026-10-31T04:07:54,retrieval,500,50,4,paraphrase-multilingual-MiniLM-L12-v2,,,28,22,5,0.8636,0.6894,,,,,,,,混合檢索 hybrid（RRF k=5）
+2026-10-31T04:08:11,grid,300,50,3,paraphrase-multilingual-MiniLM-L12-v2,,,49,22,,0.8182,0.6061,,,,,,,,網格搜尋（hybrid）；平均送出 796 字
+2026-10-31T04:08:11,grid,300,50,4,paraphrase-multilingual-MiniLM-L12-v2,,,49,22,,0.8636,0.6174,,,,,,,,網格搜尋（hybrid）；平均送出 1063 字
+2026-10-31T04:08:11,grid,300,50,5,paraphrase-multilingual-MiniLM-L12-v2,,,49,22,,0.9091,0.6265,,,,,,,,網格搜尋（hybrid）；平均送出 1315 字
+2026-10-31T04:08:11,grid,500,50,3,paraphrase-multilingual-MiniLM-L12-v2,,,28,22,,0.7727,0.6667,,,,,,,,網格搜尋（hybrid）；平均送出 1404 字
+2026-10-31T04:08:11,grid,500,50,4,paraphrase-multilingual-MiniLM-L12-v2,,,28,22,,0.8636,0.6894,,,,,,,,網格搜尋（hybrid）；平均送出 1879 字
+2026-10-31T04:08:11,grid,500,50,5,paraphrase-multilingual-MiniLM-L12-v2,,,28,22,,0.9091,0.6985,,,,,,,,網格搜尋（hybrid）；平均送出 2350 字
+2026-10-31T04:08:11,grid,800,50,3,paraphrase-multilingual-MiniLM-L12-v2,,,17,22,,0.8182,0.697,,,,,,,,網格搜尋（hybrid）；平均送出 2256 字
+2026-10-31T04:08:11,grid,800,50,4,paraphrase-multilingual-MiniLM-L12-v2,,,17,22,,0.8182,0.697,,,,,,,,網格搜尋（hybrid）；平均送出 3002 字
+2026-10-31T04:08:11,grid,800,50,5,paraphrase-multilingual-MiniLM-L12-v2,,,17,22,,0.8182,0.697,,,,,,,,網格搜尋（hybrid）；平均送出 3754 字

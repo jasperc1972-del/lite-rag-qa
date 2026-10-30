@@ -4,7 +4,7 @@
 
 ▶️ **示範影片**：https://www.youtube.com/watch?v=KsfMsHeP24w
 📖 **操作手冊**：[docs/使用手冊.md](docs/使用手冊.md)
-📋 **需求規格（PRD V2.3）**：[docs/PRD_v2.3.docx](docs/PRD_v2.3.docx)
+📋 **需求規格（PRD V2.4）**：[docs/PRD_v2.4.docx](docs/PRD_v2.4.docx)
 
 ## 快速開始（Windows，建議 Python 3.13）
 ```
@@ -29,7 +29,8 @@ Python｜Claude API（Sonnet 5.5）｜ChromaDB｜sentence-transformers（多語�
 | `loaders/` | 讀檔模組與格式註冊表（改 `CURRENT_RELEASE` 切換版本） |
 | `chunker.py` | 文本切片 |
 | `ingest.py` | 建立／刪除／重建索引、預覽、匯出 |
-| `retriever.py` | 語意檢索 |
+| `retriever.py` | 檢索：語意＋關鍵字混合（`SEARCH_MODE`） |
+| `keyword_search.py` | 關鍵字檢索：手寫 BM25 與 RRF 排名融合 |
 | `llm.py` | Claude 呼叫、來源標註 |
 | `prompts.py` | 防幻覺 System Prompt 與版本號（改 Prompt 時遞增版本） |
 | `qa_log.py` | 問答紀錄：每次問答寫入 `logs/qa_YYYYMM.jsonl`（不入版控） |
