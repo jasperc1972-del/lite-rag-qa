@@ -47,8 +47,11 @@ def _location(meta: dict) -> str:
     return f"第 {first} 段" if first == last else f"第 {first}-{last} 段"
 
 
-def chunk_documents(docs: list) -> list:
-    """把整份檔案的 Document 清單轉成切片清單；每塊 metadata 會加上 location 與 chunk_index"""
+def chunk_documents(docs: list, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -> list:
+    """把整份檔案的 Document 清單轉成切片清單；每塊 metadata 會加上 location 與 chunk_index
+
+    size / overlap 預設取 config；參數實驗 (F-15) 會傳入其他值比較效果
+    """
     chunks = []
 
     def emit(text: str, meta: dict):
@@ -68,20 +71,20 @@ def chunk_documents(docs: list) -> list:
         meta = doc.metadata
         if "page" in meta:
             # PDF：每頁獨立切片
-            for piece in split_text(doc.text):
+            for piece in split_text(doc.text, size, overlap):
                 emit(piece, meta)
             continue
 
         # 段落型：過長的段落單獨切開
-        if len(doc.text) > CHUNK_SIZE:
+        if len(doc.text) > size:
             flush()
-            for piece in split_text(doc.text):
+            for piece in split_text(doc.text, size, overlap):
                 emit(piece, meta)
             continue
 
         # 加上這段會超過上限 → 先把暫存區輸出
         current_len = sum(len(b) + 1 for b in buf)
-        if buf and current_len + len(doc.text) > CHUNK_SIZE:
+        if buf and current_len + len(doc.text) > size:
             flush()
         if not buf:
             buf_meta = dict(meta)

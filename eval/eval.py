@@ -23,6 +23,7 @@ import re
 import sys
 import time
 from datetime import datetime
+from functools import lru_cache
 from pathlib import Path
 
 os.environ.setdefault("HF_HUB_OFFLINE", "1")          # Embedding 模型已下載，不連網
@@ -53,18 +54,29 @@ def load_questions() -> list:
         return [json.loads(line) for line in f if line.strip()]
 
 
-def build_index():
-    """用 uploads/ 的原始檔建一份記憶體中的暫存索引，回傳 (collection, 切片數, 檔名清單)"""
-    import chromadb
+@lru_cache(maxsize=1)
+def _embedding_function():
+    """Embedding 模型只載入一次；參數實驗要重建多次索引時可省下載入時間"""
     from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
+    return SentenceTransformerEmbeddingFunction(model_name=config.EMBEDDING_MODEL)
 
+
+def build_index(chunk_size: int = None, overlap: int = None):
+    """用 uploads/ 的原始檔建一份記憶體中的暫存索引，回傳 (collection, 切片數, 檔名清單)
+
+    chunk_size / overlap 不指定時用 config 的值；參數實驗 (grid.py) 會傳入其他值
+    """
+    import chromadb
+
+    size = chunk_size or config.CHUNK_SIZE
+    ovl = config.CHUNK_OVERLAP if overlap is None else overlap
     client = chromadb.EphemeralClient()
     name = "eval"
     if name in [c.name for c in client.list_collections()]:
         client.delete_collection(name)
     col = client.create_collection(
         name=name,
-        embedding_function=SentenceTransformerEmbeddingFunction(model_name=config.EMBEDDING_MODEL),
+        embedding_function=_embedding_function(),
         metadata={"hnsw:space": "cosine"},   # 和 app 一樣用餘弦距離
     )
 
@@ -72,7 +84,7 @@ def build_index():
     total = 0
     for path in files:
         try:
-            chunks = chunk_documents(get_loader(path.name)(path.name, path.read_bytes()))
+            chunks = chunk_documents(get_loader(path.name)(path.name, path.read_bytes()), size, ovl)
         except LoaderError as e:
             print(f"  略過 {path.name}：{e}")
             continue
@@ -213,14 +225,19 @@ RESULT_FIELDS = ["time", "mode", "chunk_size", "chunk_overlap", "top_k", "embedd
                  "avg_output_tokens", "note"]
 
 
-def save(rows: list, summary: dict):
-    """results.csv 追加一列 (F-15)；last_run.jsonl 覆寫逐題明細"""
+def append_result(summary: dict):
+    """results.csv 追加一列 (F-15)；eval.py 與 grid.py 共用"""
     new_file = not RESULTS.exists()
     with open(RESULTS, "a", encoding="utf-8-sig", newline="") as f:   # utf-8-sig：Excel 開啟中文不亂碼
         writer = csv.DictWriter(f, fieldnames=RESULT_FIELDS)
         if new_file:
             writer.writeheader()
         writer.writerow({k: summary.get(k, "") for k in RESULT_FIELDS})
+
+
+def save(rows: list, summary: dict):
+    """results.csv 追加一列；last_run.jsonl 覆寫逐題明細"""
+    append_result(summary)
     with open(LAST_RUN, "w", encoding="utf-8") as f:
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")

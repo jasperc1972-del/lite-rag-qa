@@ -1,3 +1,12 @@
 ﻿time,mode,chunk_size,chunk_overlap,top_k,embedding_model,claude_model,prompt_version,n_chunks,n_in_doc,n_out_of_doc,hit_rate,mrr,refuse_acc,source_acc,keyword_acc,wrong_refuse,avg_sec,avg_input_tokens,avg_output_tokens,note
 2026-10-31T03:39:58,retrieval,500,50,4,paraphrase-multilingual-MiniLM-L12-v2,,,28,22,5,0.8182,0.5227,,,,,,,,R1.1 基準（純檢索，題庫補完答案出處）
 2026-10-31T03:53:25,llm,500,50,4,paraphrase-multilingual-MiniLM-L12-v2,claude-haiku-5-5,v2,28,22,5,0.8182,0.5227,0.8,0.8182,0.8636,3,2.1,2259,245,Haiku 試跑（Prompt v2）
+2026-10-31T03:59:51,grid,300,50,3,paraphrase-multilingual-MiniLM-L12-v2,,,49,22,,0.5909,0.4545,,,,,,,,網格搜尋；平均送出 803 字
+2026-10-31T03:59:51,grid,300,50,4,paraphrase-multilingual-MiniLM-L12-v2,,,49,22,,0.6818,0.4773,,,,,,,,網格搜尋；平均送出 1059 字
+2026-10-31T03:59:51,grid,300,50,5,paraphrase-multilingual-MiniLM-L12-v2,,,49,22,,0.6818,0.4773,,,,,,,,網格搜尋；平均送出 1326 字
+2026-10-31T03:59:51,grid,500,50,3,paraphrase-multilingual-MiniLM-L12-v2,,,28,22,,0.6364,0.4773,,,,,,,,網格搜尋；平均送出 1412 字
+2026-10-31T03:59:51,grid,500,50,4,paraphrase-multilingual-MiniLM-L12-v2,,,28,22,,0.8182,0.5227,,,,,,,,網格搜尋；平均送出 1882 字
+2026-10-31T03:59:51,grid,500,50,5,paraphrase-multilingual-MiniLM-L12-v2,,,28,22,,0.8182,0.5227,,,,,,,,網格搜尋；平均送出 2330 字
+2026-10-31T03:59:51,grid,800,50,3,paraphrase-multilingual-MiniLM-L12-v2,,,17,22,,0.6364,0.4621,,,,,,,,網格搜尋；平均送出 2233 字
+2026-10-31T03:59:51,grid,800,50,4,paraphrase-multilingual-MiniLM-L12-v2,,,17,22,,0.6818,0.4735,,,,,,,,網格搜尋；平均送出 2998 字
+2026-10-31T03:59:51,grid,800,50,5,paraphrase-multilingual-MiniLM-L12-v2,,,17,22,,0.7727,0.4917,,,,,,,,網格搜尋；平均送出 3748 字
