@@ -4,6 +4,7 @@
 
 ▶️ **示範影片**：https://www.youtube.com/watch?v=KsfMsHeP24w
 📖 **操作手冊**：[docs/使用手冊.md](docs/使用手冊.md)
+📋 **需求規格（PRD V2.3）**：[docs/PRD_v2.3.docx](docs/PRD_v2.3.docx)
 
 ## 快速開始（Windows，建議 Python 3.13）
 ```
@@ -16,6 +17,9 @@ copy .env.example .env      # 再用記事本填入 ANTHROPIC_API_KEY
 
 ## 技術
 Python｜Claude API（Sonnet 5.5）｜ChromaDB｜sentence-transformers（多語言模型）｜PyMuPDF｜python-docx｜Streamlit
+
+## 實作原則
+不使用 LangChain / LlamaIndex 等編排框架；切片、檢索、Prompt 組裝與來源標註皆為專案內手寫程式，直接呼叫 anthropic SDK 與基礎函式庫。
 
 ## 檔案說明
 | 檔案 | 用途 |
@@ -33,5 +37,6 @@ Python｜Claude API（Sonnet 5.5）｜ChromaDB｜sentence-transformers（多語�
 | 版本 | 支援格式 |
 |---|---|
 | **R1（目前）** | PDF（文字層）、.docx、.md、.txt |
+| R1.1（規劃中） | 品質補強：評估集、問答紀錄、參數實驗、Prompt 版本管理（格式不變） |
 | R2 | ＋ Excel .xlsx、.csv |
 | R3 | ＋ 圖片、掃描型 PDF（本機 OCR） |
