@@ -34,13 +34,26 @@ Python｜Claude API（Sonnet 5.5）｜ChromaDB｜sentence-transformers（多語�
 | `prompts.py` | 防幻覺 System Prompt 與版本號（改 Prompt 時遞增版本） |
 | `qa_log.py` | 問答紀錄：每次問答寫入 `logs/qa_YYYYMM.jsonl`（不入版控） |
 | `啟動.bat` | 雙擊啟動程式 |
-| `tests/` | 單元測試（切片、讀檔、格式註冊表） |
+| `tests/` | 單元測試（切片、讀檔、格式註冊表、Prompt、紀錄、評估計分） |
+| `eval/` | 評估：`questions.jsonl` 題庫、`eval.py` 評估腳本、`results.csv` 歷次結果 |
 
 ## 執行測試
 ```
 .venv\Scripts\python.exe -m pytest tests
 ```
-測試不載入模型、不呼叫 API，約 2 秒完成。
+測試不載入模型、不呼叫 API，約 3 秒完成。
+
+回歸測試（平常不執行，需要時手動指定）：
+```
+.venv\Scripts\python.exe -m pytest -m eval    發版前：檢索命中率不可低於基準（免費，約 15 秒）
+.venv\Scripts\python.exe -m pytest -m llm     驗收時：文件外問題全部拒答、有答案時不誤拒答（會產生 API 費用）
+```
+
+## 評估（題庫打分數）
+```
+.venv\Scripts\python.exe eval\eval.py          只評估檢索，免費
+.venv\Scripts\python.exe eval\eval.py --llm    連同 Claude 回答一起評估（會產生 API 費用）
+```
 
 ## 版本規劃
 | 版本 | 支援格式 |

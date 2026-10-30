@@ -23,9 +23,13 @@ class Hit:
         return f"{self.source} {self.location}"
 
 
-def search(query: str, k: int = config.TOP_K) -> list:
-    """回傳與問題最相關的 k 個切片；索引為空時回傳空清單"""
-    col = get_collection()
+def search(query: str, k: int = config.TOP_K, collection=None) -> list:
+    """回傳與問題最相關的 k 個切片；索引為空時回傳空清單
+
+    collection: 要查詢的 ChromaDB collection；預設為 app 使用的本機索引，
+                評估腳本會傳入自己建立的暫存索引 (F-13)
+    """
+    col = collection if collection is not None else get_collection()
     total = col.count()
     if total == 0:
         return []

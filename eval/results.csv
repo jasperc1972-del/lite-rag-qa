@@ -1,0 +1,3 @@
+﻿time,mode,chunk_size,chunk_overlap,top_k,embedding_model,claude_model,prompt_version,n_chunks,n_in_doc,n_out_of_doc,hit_rate,mrr,refuse_acc,source_acc,keyword_acc,wrong_refuse,avg_sec,avg_input_tokens,avg_output_tokens,note
+2026-10-31T03:39:58,retrieval,500,50,4,paraphrase-multilingual-MiniLM-L12-v2,,,28,22,5,0.8182,0.5227,,,,,,,,R1.1 基準（純檢索，題庫補完答案出處）
+2026-10-31T03:53:25,llm,500,50,4,paraphrase-multilingual-MiniLM-L12-v2,claude-haiku-5-5,v2,28,22,5,0.8182,0.5227,0.8,0.8182,0.8636,3,2.1,2259,245,Haiku 試跑（Prompt v2）

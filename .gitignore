@@ -14,3 +14,4 @@ __pycache__/
 .idea/
 .pytest_cache/
 logs/
+eval/last_run.jsonl

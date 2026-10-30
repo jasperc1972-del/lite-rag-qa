@@ -1,0 +1,27 @@
+{"id": "Q01", "type": "in_doc", "q": "R1 可以上傳哪些格式的檔案？", "evidence": ["R1：PDF、Word、Markdown、TXT", "支援上傳 .pdf、.md、.txt"], "expect": ["pdf", "docx", "md", "txt"]}
+{"id": "Q02", "type": "in_doc", "q": "Excel 檔案什麼時候才會支援？", "evidence": ["R2 第二版｜.xlsx、.csv", "預計 R2 支援"], "expect": ["R2"]}
+{"id": "Q03", "type": "in_doc", "q": "為什麼 Excel 要獨立成第二版，不跟 R1 一起做？", "evidence": ["欄位名稱與數值會被切散"], "expect": ["欄位"]}
+{"id": "Q04", "type": "in_doc", "q": "系統怎麼判斷上傳的 PDF 是掃描檔？", "evidence": ["上傳後由 pdf_loader 檢查文字層", "無文字層時回報為掃描檔"], "expect": ["文字層"]}
+{"id": "Q05", "type": "in_doc", "q": "每個切片多大？前後切片會重疊多少？", "evidence": ["單塊上限 500 字元、重疊 50 字元", "500「字元」、overlap 50 字元", "切片 500 / 50"], "expect": ["500", "重疊50|50字元|50個字元|overlap50"]}
+{"id": "Q06", "type": "in_doc", "q": "預設用哪一個 Embedding 模型？", "evidence": ["預設 paraphrase-multilingual-MiniLM-L12-v2", "paraphrase-multilingual-MiniLM-L12-v2（預設）"], "expect": ["paraphrase-multilingual-MiniLM-L12-v2"]}
+{"id": "Q07", "type": "in_doc", "q": "預設使用哪個 Claude 模型？想省錢可以換成什麼？", "evidence": ["低成本模式 claude-haiku-5-5", "claude-haiku-5-5（低成本）"], "expect": ["sonnet", "haiku"]}
+{"id": "Q08", "type": "in_doc", "q": "每次檢索會取回幾個片段？", "evidence": ["Top-K 預設 4"], "expect": ["4個|4筆|預設4|預設為4|top-k=4|top_k=4"]}
+{"id": "Q09", "type": "in_doc", "q": "如果文件裡沒有答案，系統應該怎麼回應？", "evidence": ["不得自行推測或編造", "針對文件外問題，系統明確回覆找不到"], "expect": ["找不到"]}
+{"id": "Q10", "type": "in_doc", "q": "API Key 應該放在哪裡？", "evidence": ["API Key 只存放於專案根目錄 .env", "申請 API Key，填入 .env"], "expect": [".env"]}
+{"id": "Q11", "type": "in_doc", "q": "使用這個系統時，哪些資料會被送到外部？", "evidence": ["僅「檢索片段＋問題」會送至 Claude API"], "expect": ["片段", "問題"]}
+{"id": "Q12", "type": "in_doc", "q": "問一個問題大概要等多久才會有回答？", "evidence": ["目標於 10 秒內回應"], "expect": ["10秒"]}
+{"id": "Q13", "type": "in_doc", "q": "這個專案為什麼不用 LangChain？", "evidence": ["框架只會增加抽象層與依賴", "此規模不需要框架的抽象層"], "expect": ["抽象層"]}
+{"id": "Q14", "type": "in_doc", "q": "OCR 預計使用什麼引擎？", "evidence": ["Tesseract / PaddleOCR", "Tesseract＋繁中語言包，或 PaddleOCR"], "expect": ["Tesseract", "PaddleOCR"]}
+{"id": "Q15", "type": "in_doc", "q": "為什麼不使用 Docker 或 Kubernetes？", "evidence": ["venv＋啟動.bat 已足夠"], "expect": ["本機"]}
+{"id": "Q16", "type": "in_doc", "q": "上傳之後，要怎麼確認檔案有沒有被正確解析？", "evidence": ["上傳並建立索引後、提問之前", "顯示前 5 個切片的文字"], "expect": ["切片"]}
+{"id": "Q17", "type": "in_doc", "q": "同一個檔案重複上傳會發生什麼事？", "evidence": ["同檔重複上傳時覆蓋舊索引"], "expect": ["覆蓋"]}
+{"id": "Q18", "type": "in_doc", "q": "問答紀錄裡會記下哪些資訊？", "evidence": ["input/output tokens、耗時、錯誤訊息"], "expect": ["token", "耗時"]}
+{"id": "Q19", "type": "in_doc", "q": "R1.1 驗收時，檢索命中率要達到多少？", "evidence": ["檢索命中率目標 ≥ 85%"], "expect": ["85"]}
+{"id": "Q20", "type": "in_doc", "q": "文字檔如果不是 UTF-8 編碼怎麼辦？", "evidence": ["失敗時嘗試 Big5", "失敗改 Big5"], "expect": ["Big5"]}
+{"id": "Q21", "type": "in_doc", "q": "Which vector database does this system use?", "evidence": ["ChromaDB（本機檔案式持久化儲存", "寫入本機 ChromaDB", "寫入 ChromaDB"], "expect": ["ChromaDB"]}
+{"id": "Q22", "type": "in_doc", "q": "Word 檔裡面的表格內容也會被讀進去嗎？", "evidence": ["依段落讀取（含表格內文字）", "依段落讀取（含表格文字）"], "expect": ["表格"]}
+{"id": "O01", "type": "out_of_doc", "q": "公司明年的營收目標是多少？"}
+{"id": "O02", "type": "out_of_doc", "q": "這個系統每個月的訂閱費用是多少？"}
+{"id": "O03", "type": "out_of_doc", "q": "台北明天會下雨嗎？"}
+{"id": "O04", "type": "out_of_doc", "q": "專案負責人的電話號碼是多少？"}
+{"id": "O05", "type": "out_of_doc", "q": "R4 版本預計會支援哪些功能？"}
