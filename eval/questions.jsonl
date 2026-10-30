@@ -1,4 +1,4 @@
-{"id": "Q01", "type": "in_doc", "q": "R1 可以上傳哪些格式的檔案？", "evidence": ["R1：PDF、Word、Markdown、TXT", "支援上傳 .pdf、.md、.txt"], "expect": ["pdf", "docx", "md", "txt"]}
+{"id": "Q01", "type": "in_doc", "q": "R1 可以上傳哪些格式的檔案？", "evidence": ["R1：PDF、Word、Markdown、TXT", "支援上傳 .pdf、.md、.txt", "✔ 可上傳：PDF（含文字，可選取複製文字者）、Word (.docx)、Markdown (.md)、文字檔 (.txt)"], "expect": ["pdf", "docx", "md", "txt"]}
 {"id": "Q02", "type": "in_doc", "q": "Excel 檔案什麼時候才會支援？", "evidence": ["R2 第二版｜.xlsx、.csv", "預計 R2 支援"], "expect": ["R2"]}
 {"id": "Q03", "type": "in_doc", "q": "為什麼 Excel 要獨立成第二版，不跟 R1 一起做？", "evidence": ["欄位名稱與數值會被切散"], "expect": ["欄位"]}
 {"id": "Q04", "type": "in_doc", "q": "系統怎麼判斷上傳的 PDF 是掃描檔？", "evidence": ["上傳後由 pdf_loader 檢查文字層", "無文字層時回報為掃描檔"], "expect": ["文字層"]}

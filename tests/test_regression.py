@@ -19,10 +19,10 @@ _spec = importlib.util.spec_from_file_location(
 ev = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(ev)
 
-# 檢索命中率基準：混合檢索（hybrid、RRF k=5、切片 500 / 重疊 50 / TOP_K 4）19/22
-# 歷史：純語意檢索 18/22 = 0.8182（R1.1 步驟 3）
+# 檢索命中率基準：混合檢索（hybrid、RRF k=5、切片 500 / 重疊 50 / TOP_K 4）20/22（R1.1 正式驗收）
+# 歷史：純語意 18/22 = 0.8182（步驟 3）→ 混合 19/22 = 0.8636 → Q01 補登出處後 20/22
 # 參數實驗 (F-15) 找到更好的設定後，請把基準更新為新的分數
-BASELINE_HIT_RATE = 0.8636
+BASELINE_HIT_RATE = 0.9091
 
 
 @pytest.mark.eval

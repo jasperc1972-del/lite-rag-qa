@@ -20,3 +20,5 @@
 2026-10-31T04:08:11,grid,800,50,3,paraphrase-multilingual-MiniLM-L12-v2,,,17,22,,0.8182,0.697,,,,,,,,網格搜尋（hybrid）；平均送出 2256 字
 2026-10-31T04:08:11,grid,800,50,4,paraphrase-multilingual-MiniLM-L12-v2,,,17,22,,0.8182,0.697,,,,,,,,網格搜尋（hybrid）；平均送出 3002 字
 2026-10-31T04:08:11,grid,800,50,5,paraphrase-multilingual-MiniLM-L12-v2,,,17,22,,0.8182,0.697,,,,,,,,網格搜尋（hybrid）；平均送出 3754 字
+2026-10-31T04:21:59,llm,500,50,4,paraphrase-multilingual-MiniLM-L12-v2,claude-sonnet-5-5,v2,28,22,5,0.8636,0.6894,1.0,0.8636,0.9091,1,2.5,2278,156,R1.1 正式驗收（Sonnet 5.5、hybrid、Prompt v2）
+2026-10-31T04:22:39,retrieval,500,50,4,paraphrase-multilingual-MiniLM-L12-v2,,,28,22,5,0.9091,0.7348,,,,,,,,Q01 補登出處後重新計分（hybrid，純檢索）
