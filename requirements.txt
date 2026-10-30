@@ -6,3 +6,4 @@ python-docx            # Word (.docx) 解析
 sentence-transformers  # 本機多語言 Embedding 模型（會連帶安裝 PyTorch）
 streamlit              # 網頁互動介面
 python-dotenv          # 讀取 .env 環境變數
+pytest                 # 單元測試（開發用）

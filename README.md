@@ -32,6 +32,13 @@ Python｜Claude API（Sonnet 5.5）｜ChromaDB｜sentence-transformers（多語�
 | `retriever.py` | 語意檢索 |
 | `llm.py` | Claude 呼叫、防幻覺 Prompt、來源標註 |
 | `啟動.bat` | 雙擊啟動程式 |
+| `tests/` | 單元測試（切片、讀檔、格式註冊表） |
+
+## 執行測試
+```
+.venv\Scripts\python.exe -m pytest tests
+```
+測試不載入模型、不呼叫 API，約 2 秒完成。
 
 ## 版本規劃
 | 版本 | 支援格式 |
