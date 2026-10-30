@@ -30,7 +30,9 @@ Python｜Claude API（Sonnet 5.5）｜ChromaDB｜sentence-transformers（多語�
 | `chunker.py` | 文本切片 |
 | `ingest.py` | 建立／刪除／重建索引、預覽、匯出 |
 | `retriever.py` | 語意檢索 |
-| `llm.py` | Claude 呼叫、防幻覺 Prompt、來源標註 |
+| `llm.py` | Claude 呼叫、來源標註 |
+| `prompts.py` | 防幻覺 System Prompt 與版本號（改 Prompt 時遞增版本） |
+| `qa_log.py` | 問答紀錄：每次問答寫入 `logs/qa_YYYYMM.jsonl`（不入版控） |
 | `啟動.bat` | 雙擊啟動程式 |
 | `tests/` | 單元測試（切片、讀檔、格式註冊表） |
 

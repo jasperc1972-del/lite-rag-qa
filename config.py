@@ -30,6 +30,7 @@ CHUNK_OVERLAP = 50
 # ---- 本機資料夾 ----
 CHROMA_DIR = BASE_DIR / "chroma_db"   # 向量索引
 UPLOAD_DIR = BASE_DIR / "uploads"     # 上傳的原始檔（供「重新建立索引」使用）
+LOG_DIR = BASE_DIR / "logs"           # 問答紀錄 (F-14)，含問題與回答內容，不入版控
 COLLECTION_NAME = "documents"
 
 

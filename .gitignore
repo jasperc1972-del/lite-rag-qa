@@ -13,3 +13,4 @@ __pycache__/
 # IDE 設定（含本機路徑與資料庫連線資訊，不入版控）
 .idea/
 .pytest_cache/
+logs/

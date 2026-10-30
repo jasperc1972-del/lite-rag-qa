@@ -4,14 +4,17 @@ app.py — Streamlit 網頁介面 (F-00、F-08 ~ F-12)
 啟動方式：streamlit run app.py
 畫面分兩個分頁：
 - 📁 文件管理：格式提示 → 確認 → 上傳建立索引 → 解析摘要與切片預覽
-- 💬 問答：多輪對話、回答附來源、可展開檢視檢索片段
+- 💬 問答：多輪對話、回答附來源、可展開檢視檢索片段；每次問答寫入 logs/ (F-14)
 側邊欄：已索引檔案清單、刪除、重建索引、清除對話
 """
+import time
+
 import streamlit as st
 
 import config
 import ingest
 import llm
+import qa_log
 import retriever
 from loaders import CURRENT_RELEASE, supported_extensions, supported_specs, unsupported_specs
 
@@ -151,13 +154,16 @@ def tab_chat():
         with st.spinner("檢索文件並產生回答中…"):
             # 只帶純文字的先前對話給 Claude（不含本次問題）
             history = [{"role": m["role"], "content": m["content"]} for m in st.session_state.messages[:-1]]
+            start, hits = time.perf_counter(), []
             try:
                 hits = retriever.search(question)
                 result = llm.answer(question, hits, history)
                 msg = {"role": "assistant", "content": result.text,
                        "sources": result.sources, "hits": result.hits}
+                qa_log.log_qa(question, hits, result, elapsed=time.perf_counter() - start)
             except llm.LLMError as e:
                 msg = {"role": "assistant", "content": f"⚠️ {e}", "sources": [], "hits": []}
+                qa_log.log_qa(question, hits, error=str(e), elapsed=time.perf_counter() - start)
         render_message(msg)
     st.session_state.messages.append(msg)
 
